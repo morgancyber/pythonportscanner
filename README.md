@@ -1,6 +1,6 @@
 Introduction
 
-Hey! Welcom to my Python port scanner tutorial.A port scanner is a tool that scans a range of network ports on a target system to determine which ports are open or closed. This information can be used to identify potential security vulnerabilities or to test the functionality of network services. In this tutorial, we will build a simple port scanner using Python.
+Hey! Welcome to my Python port scanner tutorial.A port scanner is a tool that scans a range of network ports on a target system to determine which ports are open or closed. This information can be used to identify potential security vulnerabilities or to test the functionality of network services. In this tutorial, we will build a simple port scanner using Python.
 Prerequisites
 
 Before we begin, make sure you have Python 3 installed on your system. You will also need to have basic knowledge of networking concepts and the socket module in Python.
