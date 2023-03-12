@@ -1,53 +1,94 @@
-Introduction
+In this tutorial, we will be creating a simple Python port scanner script that will allow us to scan for open ports on a remote server. Port scanning is an important technique used by network administrators and security experts to detect potential vulnerabilities in their systems. We will be using the Python programming language to create a port scanner script that can be run from the command line.
 
-Hey! Welcome to my Python port scanner tutorial. A port scanner is a tool that scans a range of network ports on a target system to determine which ports are open or closed. This information can be used to identify potential security vulnerabilities or to test the functionality of network services. In this tutorial, we will build a simple port scanner using Python.
-Prerequisites
+Prerequisites:
+Before we begin, you will need to have Python installed on your machine. You can download and install Python from the official website.
 
-Before we begin, make sure you have Python 3 installed on your system. You will also need to have basic knowledge of networking concepts and the socket module in Python.
-Setting up the Target Host and Port Range
+Step 1: Setting up the environment
+First, open your preferred text editor and create a new file called "portscanner.py". Save it to a location of your choice.
 
-The first thing we need to do is set up the target host and port range that we want to scan. We can prompt the user to enter the target host and the list of ports to scan using the input() function:
+Step 2: Importing necessary modules
+Next, we need to import the necessary modules. Open the "portscanner.py" file and add the following lines of code at the top of the file:
 
-
-target_host = input("Enter the target host: ")
-target_ports = input("Enter the target ports (comma separated): ")
-
-We can convert the comma-separated list of ports to a Python list of integers using the split() and int() functions:
+![image](https://user-images.githubusercontent.com/120361960/224516952-d4be6d36-b680-4b46-9abf-d91883503436.png)
 
 
-target_ports = [int(port) for port in target_ports.split(",")]
+Step 3: Defining the port scanning function
+We will now define a function that will perform the port scanning. This function will take in the IP address and port number(s) as parameters and will return a list of open ports.
 
-Scanning the Ports
+Add the following lines of code after the import statements:
 
-Now that we have our target host and port range set up, we can start scanning the ports. We can use a for loop to iterate through each port in the range and attempt a connection using the socket module.
+![image](https://user-images.githubusercontent.com/120361960/224516998-ef96f5bb-53d3-4847-8534-02d4823684fd.png)
 
+
+Introduction:
+In this tutorial, we will be creating a simple Python port scanner script that will allow us to scan for open ports on a remote server. Port scanning is an important technique used by network administrators and security experts to detect potential vulnerabilities in their systems. We will be using the Python programming language to create a port scanner script that can be run from the command line.
+
+Prerequisites:
+Before we begin, you will need to have Python installed on your machine. You can download and install Python from the official website.
+
+Step 1: Setting up the environment
+First, open your preferred text editor and create a new file called "portscanner.py". Save it to a location of your choice.
+
+Step 2: Importing necessary modules
+Next, we need to import the necessary modules. Open the "portscanner.py" file and add the following lines of code at the top of the file:
+
+python
 
 import socket
 
-for port in target_ports:
-    # create a socket object
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # set a timeout for the connection attempt
-    client.settimeout(1)
-    try:
-        # attempt to connect to the target host/port
-        client.connect((target_host, port))
-        # if the connection succeeds, print the port is open
-        print(f"Port {port} is open")
-    except:
-        # if the connection fails, print the port is closed
-        print(f"Port {port} is closed")
-    # close the socket
-    client.close()
+Step 3: Defining the port scanning function
+We will now define a function that will perform the port scanning. This function will take in the IP address and port number(s) as parameters and will return a list of open ports.
 
-Inside the for loop, we create a new socket object and set a timeout of 1 second for the connection attempt using the settimeout() method. We then try to connect to the target host and port using the connect() method. If the connection is successful, we print a message indicating that the port is open. If the connection fails, we print a message indicating that the port is closed. Finally, we close the socket using the close() method.
-Testing the Port Scanner
+Add the following lines of code after the import statements:
 
-Now that we have our port scanner script ready, let's test it out. Save the script to a file named portscanner.py and run it from the command line:
+python
 
-python portscanner.py
+def scan_ports(target, ports):
+    # Create a list to store the open ports
+    open_ports = []
 
-You will be prompted to enter the target host and the list of ports to scan. Enter the information and press Enter. The script will scan the target ports and print a message indicating whether each port is open or closed.
-Conclusion
+    # Split the port range (if specified) into start and end ports
+    if "-" in ports:
+        start_port, end_port = ports.split("-")
+        start_port = int(start_port)
+        end_port = int(end_port)
+    else:
+        start_port = end_port = int(ports)
 
-In this tutorial, we built a simple port scanner using Python. This port scanner is a basic implementation and may not work for all scenarios. It also has the potential to generate a lot of network traffic, so use caution when scanning large numbers of ports or targets. Additionally, port scanning can be used for malicious purposes, so make sure you have permission before scanning any network or system.
+    # Iterate over the range of ports and attempt a connection
+    for port in range(start_port, end_port+1):
+        # Create a new socket object
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+
+        # Attempt to connect to the port
+        result = sock.connect_ex((target, port))
+
+        # If the connection was successful, add the port to the list of open ports
+        if result == 0:
+            open_ports.append(port)
+
+        # Close the socket
+        sock.close()
+
+    # Return the list of open ports
+    return open_ports
+
+Step 4: Parsing the command-line arguments and calling the port scanning function
+We will now parse the command-line arguments and call the port scanning function. Add the following lines of code to the end of the file:
+
+![image](https://user-images.githubusercontent.com/120361960/224517001-e044a068-6748-4f00-96cf-46fb41cdffe7.png)
+
+![Uploading image.png…]()
+Step 5: Testing the script
+Save the "portscanner.py" file and open a command prompt or terminal window. Navigate to the directory where the file is saved and enter the following command:
+
+'python portscanner.py'
+
+You will be prompted to enter the IP address of the target server and the range of ports to scan. Once you have entered the necessary information, the script will scan the specified ports and display the results.
+
+Congratulations, you have created a simple Python port scanner script! You can now use this script to scan for open ports on any remote server. Please note that port scanning can be considered a security threat and should only be used for legitimate purposes.
+
+
+
+
