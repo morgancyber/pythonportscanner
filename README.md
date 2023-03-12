@@ -90,8 +90,7 @@ Save the "portscanner.py" file and open a command prompt or terminal window. Nav
 
 You will be prompted to enter the IP address of the target server and the range of ports to scan. Once you have entered the necessary information, the script will scan the specified ports and display the results.
 
-Congratulations, you have created a simple Python port scanner script! You can now use this script to scan for open ports on any remote server. Please note that port scanning can be considered a security threat and should only be used for legitimate purposes.
-
+I am not responsible for how you will use this script. Toodles
 
 
 
