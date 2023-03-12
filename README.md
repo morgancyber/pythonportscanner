@@ -82,7 +82,7 @@ We will now parse the command-line arguments and call the port scanning function
 
 ![image](https://user-images.githubusercontent.com/120361960/224517001-e044a068-6748-4f00-96cf-46fb41cdffe7.png)
 
-![Uploading image.png…]()
+
 Step 5: Testing the script
 Save the "portscanner.py" file and open a command prompt or terminal window. Navigate to the directory where the file is saved and enter the following command:
 
