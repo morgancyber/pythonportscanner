@@ -1,4 +1,7 @@
-In this tutorial, we will be creating a simple Python port scanner script that will allow us to scan for open ports on a remote server. Port scanning is an important technique used by network administrators and security experts to detect potential vulnerabilities in their systems. We will be using the Python programming language to create a port scanner script that can be run from the command line.
+![image](https://user-images.githubusercontent.com/120361960/224517040-f90f5ac9-8481-43f4-9090-3daf80413bbd.png)
+
+
+Hey guys! In this tutorial, we will be creating a simple Python port scanner script that will allow us to scan for open ports on a remote server. Port scanning is an important technique used by network administrators and security experts to detect potential vulnerabilities in their systems. We will be using the Python programming language to create a port scanner script that can be run from the command line.
 
 Prerequisites:
 Before we begin, you will need to have Python installed on your machine. You can download and install Python from the official website.
